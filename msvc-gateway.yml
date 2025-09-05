@@ -37,5 +37,5 @@ logging:
     org.springframework.cloud.netflix.eureka: DEBUG
 
 jwt:
-  secret: secretPassword123
+  secret: aVeryLongSecretKeyThatIsAtLeast32Chars!!
   expiration: 900000 #15*1000*60 #15 minutes
