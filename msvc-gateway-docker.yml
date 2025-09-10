@@ -1,0 +1,41 @@
+server:
+  port: 8090
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+
+spring:
+  application:
+    name: msvc-gateway
+  cloud:
+    gateway:
+      #webflux:
+      routes:
+        - id: msvc-products
+          uri: lb://msvc-products
+          predicates:
+            - Path=/api/products/**,/api/categories/**
+          #filters:
+          #  - StripPrefix=1
+        - id: msvc-orders
+          uri: lb://msvc-orders
+          predicates:
+            - Path=/api/orders/**,/api/orderItems/**
+          #filters:
+          #  - StripPrefix=1
+        - id: auth-service
+          uri: lb://msvc-users
+          predicates:
+            - Path=/api/auth/**
+          filters: [] # no filter applied
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.cloud.netflix.eureka: DEBUG
+
+jwt:
+  secret: aVeryLongSecretKeyThatIsAtLeast32Chars!!
+  expiration: 900000 #15*1000*60 #15 minutes
