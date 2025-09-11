@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://db.yhnqvpahxejfqltzzjxp.supabase.co:5432/postgres
+    url: jdbc:postgresql://db.yhnqvpahxejfqltzzjxp.supabase.co:5432/postgres?preferQueryMode=simple&options=-Djava.net.preferIPv4Stack=true
     username: postgres
     password: B4$3d3d4t0$
   jpa:
