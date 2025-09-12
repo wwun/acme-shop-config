@@ -3,9 +3,10 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://db.yhnqvpahxejfqltzzjxp.supabase.co:5432/postgres?preferQueryMode=simple&options=-Djava.net.preferIPv4Stack=true
-    username: postgres
+    url: jdbc:postgresql://aws-0-us-east-1.pooler.supabase.com:5432/postgres
+    username: postgres.yhnqvpahxejfqltzzjxp
     password: B4$3d3d4t0$
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
