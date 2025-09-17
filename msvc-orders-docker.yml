@@ -21,3 +21,7 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka-server:8761/eureka
+
+jwt:
+  secret: aVeryLongSecretKeyThatIsAtLeast32Chars!!
+  expiration: 900000 #15*1000*60 #15 minutes
