@@ -30,7 +30,7 @@ spring:
         - id: auth-service
           uri: lb://msvc-users
           predicates:
-            - Path=/api/auth/**
+            - Path=/api/auth/**,/api/users/**
           filters: [] # no filter applied
 
 logging:
