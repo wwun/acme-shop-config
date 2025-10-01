@@ -15,6 +15,30 @@ spring:
     gateway:
       #webflux:
       routes:
+      
+       #swagger
+        #products
+        - id: msvc-products-swagger
+          uri: lb://msvc-products
+          predicates:
+            - Path=/api/products/swagger-ui.html,/api/products/swagger-ui/**
+          filters:
+            - StripPrefix=2
+        #orders
+        - id: msvc-orders-swagger
+          uri: lb://msvc-orders
+          predicates:
+            - Path=/api/orders/swagger-ui.html,/api/orders/swagger-ui/**
+          filters:
+            - StripPrefix=2
+        #users
+        - id: msvc-users-swagger
+          uri: lb://msvc-users
+          predicates:
+            - Path=/api/users/swagger-ui.html,/api/users/swagger-ui/**
+          filters:
+            - StripPrefix=2
+      
         - id: msvc-products
           uri: lb://msvc-products
           predicates:
@@ -38,49 +62,26 @@ spring:
 
         #openapi
         #products
-        - id: msvc-products-openapi
-          uri: lb://msvc-products
-          predicates:
-            - Path=/api/products/v3/api-docs/**,/api/products/api-docs/**
-          filters:
-            - StripPrefix=2
+#        - id: msvc-products-openapi
+#          uri: lb://msvc-products
+#          predicates:
+#            - Path=/api/products/v3/api-docs/**,/api/products/api-docs/**
+#          filters:
+#            - StripPrefix=2
         #orders
-        - id: msvc-orders-openapi
-          uri: lb://msvc-orders
-          predicates:
-            - Path=/api/orders/v3/api-docs/**,/api/orders/api-docs/**
-          filters:
-            - StripPrefix=2
+#        - id: msvc-orders-openapi
+#          uri: lb://msvc-orders
+#          predicates:
+#            - Path=/api/orders/v3/api-docs/**,/api/orders/api-docs/**
+#          filters:
+#            - StripPrefix=2
         #users
-        - id: msvc-users-openapi
-          uri: lb://msvc-users
-          predicates:
-            - Path=/api/users/v3/api-docs/**,/api/users/api-docs/**
-          filters:
-            - StripPrefix=2
-
-        #swagger
-        #products
-        - id: msvc-products-swagger
-          uri: lb://msvc-products
-          predicates:
-            - Path=/api/products/swagger-ui.html,/api/products/swagger-ui/**
-          filters:
-            - StripPrefix=2
-        #orders
-        - id: msvc-orders-swagger
-          uri: lb://msvc-orders
-          predicates:
-            - Path=/api/orders/swagger-ui.html,/api/orders/swagger-ui/**
-          filters:
-            - StripPrefix=2
-        #users
-        - id: msvc-users-swagger
-          uri: lb://msvc-users
-          predicates:
-            - Path=/api/users/swagger-ui.html,/api/users/swagger-ui/**
-          filters:
-            - StripPrefix=2
+#        - id: msvc-users-openapi
+#          uri: lb://msvc-users
+#          predicates:
+#            - Path=/api/users/v3/api-docs/**,/api/users/api-docs/**
+#          filters:
+#            - StripPrefix=2
 
 springdoc:
   api-docs:
