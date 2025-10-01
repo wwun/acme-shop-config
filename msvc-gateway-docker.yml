@@ -34,20 +34,22 @@ spring:
         - id: auth-service
           uri: lb://msvc-users
 
+        #openapi
+        #products
         - id: msvc-products-openapi
           uri: lb://msvc-products
           predicates:
             - Path=/api/products/v3/api-docs/**,/api/products/api-docs/**
           filters:
             - StripPrefix=2
-
+        #orders
         - id: orders-openapi
           uri: lb://msvc-orders
           predicates:
             - Path=/api/orders/v3/api-docs/**,/api/orders/api-docs/**
           filters:
             - StripPrefix=2
-
+        #users
         - id: users-openapi
           uri: lb://msvc-users
           predicates:
