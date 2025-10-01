@@ -27,11 +27,49 @@ spring:
             - Path=/api/orders/**,/api/orderItems/**
           #filters:
           #  - StripPrefix=1
-        - id: auth-service
+        - id: msvc-users
           uri: lb://msvc-users
           predicates:
-            - Path=/api/auth/**,/api/users/**
-          filters: [] # no filter applied
+            - Path=/api/users/**
+        - id: auth-service
+          uri: lb://msvc-users
+
+        - id: msvc-products-openapi
+          uri: lb://msvc-products
+          predicates:
+            - Path=/api/products/v3/api-docs/**,/api/products/api-docs/**
+          filters:
+            - StripPrefix=2
+
+        - id: orders-openapi
+          uri: lb://msvc-orders
+          predicates:
+            - Path=/api/orders/v3/api-docs/**,/api/orders/api-docs/**
+          filters:
+            - StripPrefix=2
+
+        - id: users-openapi
+          uri: lb://msvc-users
+          predicates:
+            - Path=/api/users/v3/api-docs/**,/api/users/api-docs/**
+          filters:
+            - StripPrefix=2
+
+          predicates:
+            - Path=/api/auth/**
+
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: users
+        url: /api/users/api-docs
+      - name: products
+        url: /api/products/api-docs
+      - name: orders
+        url: /api/orders/api-docs
 
 logging:
   level:
