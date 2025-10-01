@@ -1,5 +1,6 @@
 server:
   port: 8001
+  forward-headers-strategy: framework   # 👈 agrega esto
 
 spring:
   datasource:
@@ -24,9 +25,10 @@ eureka:
 
 springdoc:
   api-docs:
-    path: /api-docs
+    path: /v3/api-docs             # 👈 usa el path estándar
   swagger-ui:
     path: /swagger-ui.html
+    use-root-path: true            # 👈 habilita soporte correcto de proxy
 
 jwt:
   secret: aVeryLongSecretKeyThatIsAtLeast32Chars!!
