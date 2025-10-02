@@ -21,23 +21,23 @@ spring:
         - id: msvc-products-swagger
           uri: lb://msvc-products
           predicates:
-            - Path=/api/products/swagger-ui.html,/api/products/swagger-ui/**
-          filters:
-            - StripPrefix=2
+            - Path=/api/products/swagger-ui.html,/api/products/swagger-ui/**,/api/users/v3/api-docs/**
+        #  filters:
+        #    - StripPrefix=2
         #orders
         - id: msvc-orders-swagger
           uri: lb://msvc-orders
           predicates:
-            - Path=/api/orders/swagger-ui.html,/api/orders/swagger-ui/**
-          filters:
-            - StripPrefix=2
+            - Path=/api/orders/swagger-ui.html,/api/orders/swagger-ui/**,/api/users/v3/api-docs/**
+        #  filters:
+        #    - StripPrefix=2
         #users
         - id: msvc-users-swagger
           uri: lb://msvc-users
           predicates:
-            - Path=/api/users/swagger-ui.html,/api/users/swagger-ui/**
-          filters:
-            - StripPrefix=2
+            - Path=/api/users/swagger-ui.html,/api/users/swagger-ui/**,/api/users/v3/api-docs/**
+          #filters:
+          #  - StripPrefix=2
       
         - id: msvc-products
           uri: lb://msvc-products
