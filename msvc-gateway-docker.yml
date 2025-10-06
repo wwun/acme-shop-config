@@ -21,21 +21,21 @@ spring:
         - id: msvc-products-swagger
           uri: lb://msvc-products
           predicates:
-            - Path=/api/products/api-docs/**,/api/products/v3/api-docs/**
+            - Path=/api/products/v3/api-docs/**
           filters:
             - StripPrefix=2
         #orders
         - id: msvc-orders-swagger
           uri: lb://msvc-orders
           predicates:
-            - Path=/api/orders/api-docs/**,/api/orders/v3/api-docs/**
+            - Path=/api/orders/v3/api-docs/**
           filters:
             - StripPrefix=2
         #users
         - id: msvc-users-swagger
           uri: lb://msvc-users
           predicates:
-            - Path=/api/users/api-docs/**,/api/users/v3/api-docs/**
+            - Path=/api/users/v3/api-docs/**
           filters:
             - StripPrefix=2
       
@@ -60,29 +60,6 @@ spring:
           predicates:
             - Path=/api/auth/**
 
-        #openapi
-        #products
-#        - id: msvc-products-openapi
-#          uri: lb://msvc-products
-#          predicates:
-#            - Path=/api/products/v3/api-docs/**,/api/products/api-docs/**
-#          filters:
-#            - StripPrefix=2
-        #orders
-#        - id: msvc-orders-openapi
-#          uri: lb://msvc-orders
-#          predicates:
-#            - Path=/api/orders/v3/api-docs/**,/api/orders/api-docs/**
-#          filters:
-#            - StripPrefix=2
-        #users
-#        - id: msvc-users-openapi
-#          uri: lb://msvc-users
-#          predicates:
-#            - Path=/api/users/v3/api-docs/**,/api/users/api-docs/**
-#          filters:
-#            - StripPrefix=2
-
 springdoc:
   api-docs:
     enabled: false
@@ -90,11 +67,11 @@ springdoc:
     path: /swagger-ui.html
     urls:
       - name: users
-        url: /api/users/v3/api-docs,/api/users/api-docs
+        url: /api/users/v3/api-docs
       - name: products
-        url: /api/products/v3/api-docs,/api/products/api-docs
+        url: /api/products/v3/api-docs
       - name: orders
-        url: /api/orders/v3/api-docs,/api/orders/api-docs
+        url: /api/orders/v3/api-docs
 
 logging:
   level:

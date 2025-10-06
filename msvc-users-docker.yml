@@ -25,7 +25,7 @@ eureka:
 
 springdoc:
   api-docs:
-    path: /api-docs             # 👈 usa el path estándar
+    path: /v3/api-docs             # 👈 usa el path estándar
   swagger-ui:
     enabled: false
   show-actuator: true
