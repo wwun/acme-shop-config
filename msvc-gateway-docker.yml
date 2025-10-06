@@ -62,8 +62,10 @@ spring:
 
 springdoc:
   api-docs:
-    enabled: false
+    enabled: true
+    path: /v3/api-docs
   swagger-ui:
+    enabled: true
     path: /swagger-ui.html
     urls:
       - name: users
@@ -75,8 +77,9 @@ springdoc:
 
 logging:
   level:
-    org.springframework.cloud.gateway: DEBUG
-    org.springframework.cloud.netflix.eureka: DEBUG
+    org.springdoc: DEBUG
+    #org.springframework.cloud.gateway: DEBUG
+    #org.springframework.cloud.netflix.eureka: DEBUG
 
 jwt:
   secret: aVeryLongSecretKeyThatIsAtLeast32Chars!!
