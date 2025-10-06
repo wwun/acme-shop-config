@@ -21,21 +21,21 @@ spring:
         - id: msvc-products-swagger
           uri: lb://msvc-products
           predicates:
-            - Path=/api/products/swagger-ui.html,/api/products/swagger-ui/**,/api/users/v3/api-docs/**
+            - Path=/api/products/swagger-ui.html,/api/products/swagger-ui/**,/api/products/api-docs/**,/api/products/v3/api-docs/**
         #  filters:
         #    - StripPrefix=2
         #orders
         - id: msvc-orders-swagger
           uri: lb://msvc-orders
           predicates:
-            - Path=/api/orders/swagger-ui.html,/api/orders/swagger-ui/**,/api/users/v3/api-docs/**
+            - Path=/api/orders/swagger-ui.html,/api/orders/swagger-ui/**,/api/orders/api-docs/**,/api/orders/v3/api-docs/**
         #  filters:
         #    - StripPrefix=2
         #users
         - id: msvc-users-swagger
           uri: lb://msvc-users
           predicates:
-            - Path=/api/users/swagger-ui.html,/api/users/swagger-ui/**,/api/users/v3/api-docs/**
+            - Path=/api/users/swagger-ui.html,/api/users/swagger-ui/**,/api/users/api-docs/**,/api/users/v3/api-docs/**
           #filters:
           #  - StripPrefix=2
       
@@ -90,11 +90,11 @@ springdoc:
     path: /swagger-ui.html
     urls:
       - name: users
-        url: /api/users/api-docs
+        url: /api/users/v3/api-docs
       - name: products
-        url: /api/products/api-docs
+        url: /api/products/v3/api-docs
       - name: orders
-        url: /api/orders/api-docs
+        url: /api/orders/v3/api-docs
 
 logging:
   level:
