@@ -38,13 +38,13 @@ spring:
             - Path=/api/users/v3/api-docs/**
           filters:
             - StripPrefix=2
-    	- id: msvc-carts-swagger
+        - id: msvc-carts-swagger
           uri: lb://msvc-carts
           predicates:
             - Path=/api/carts/v3/api-docs/**
           filters:
             - StripPrefix=2
-      
+
         - id: msvc-products
           uri: lb://msvc-products
           predicates:
@@ -61,7 +61,7 @@ spring:
           uri: lb://msvc-users
           predicates:
             - Path=/api/users/**
-    	- id: msvc-carts
+        - id: msvc-carts
           uri: lb://msvc-carts
           predicates:
             - Path=/api/carts/**

@@ -15,7 +15,7 @@ spring:
     gateway:
       #webflux:
       routes:
-      
+
        #swagger
         #products
         - id: msvc-products-swagger
@@ -38,7 +38,7 @@ spring:
             - Path=/api/users/v3/api-docs/**
           filters:
             - StripPrefix=2
-    	- id: msvc-carts-swagger
+        - id: msvc-carts-swagger
           uri: lb://msvc-carts
           predicates:
             - Path=/api/carts/v3/api-docs/**
@@ -61,9 +61,9 @@ spring:
           uri: lb://msvc-users
           predicates:
             - Path=/api/users/**
-    	#filters:
+          #filters:
           #  - StripPrefix=1
-    	- id: msvc-carts
+        - id: msvc-carts
           uri: lb://msvc-carts
           predicates:
             - Path=/api/carts/**
