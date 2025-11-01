@@ -9,10 +9,42 @@ eureka:
 spring:
   application:
     name: msvc-gateway
+  main:
+    web-application-type: reactive
   cloud:
     gateway:
       #webflux:
       routes:
+      
+       #swagger
+        #products
+        - id: msvc-products-swagger
+          uri: lb://msvc-products
+          predicates:
+            - Path=/api/products/v3/api-docs/**
+          filters:
+            - StripPrefix=2
+        #orders
+        - id: msvc-orders-swagger
+          uri: lb://msvc-orders
+          predicates:
+            - Path=/api/orders/v3/api-docs/**
+          filters:
+            - StripPrefix=2
+        #users
+        - id: msvc-users-swagger
+          uri: lb://msvc-users
+          predicates:
+            - Path=/api/users/v3/api-docs/**
+          filters:
+            - StripPrefix=2
+    	- id: msvc-carts-swagger
+          uri: lb://msvc-carts
+          predicates:
+            - Path=/api/carts/v3/api-docs/**
+          filters:
+            - StripPrefix=2
+      
         - id: msvc-products
           uri: lb://msvc-products
           predicates:
@@ -25,16 +57,39 @@ spring:
             - Path=/api/orders/**,/api/orderItems/**
           #filters:
           #  - StripPrefix=1
+        - id: msvc-users
+          uri: lb://msvc-users
+          predicates:
+            - Path=/api/users/**
+    	- id: msvc-carts
+          uri: lb://msvc-carts
+          predicates:
+            - Path=/api/carts/**
         - id: auth-service
           uri: lb://msvc-users
           predicates:
             - Path=/api/auth/**
-          filters: [] # no filter applied
+
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    urls:
+      - name: users
+        url: /api/users/v3/api-docs
+      - name: products
+        url: /api/products/v3/api-docs
+      - name: orders
+        url: /api/orders/v3/api-docs
 
 logging:
   level:
-    org.springframework.cloud.gateway: DEBUG
-    org.springframework.cloud.netflix.eureka: DEBUG
+    org.springdoc: DEBUG
+    #org.springframework.cloud.gateway: DEBUG
+    #org.springframework.cloud.netflix.eureka: DEBUG
 
 jwt:
   secret: aVeryLongSecretKeyThatIsAtLeast32Chars!!

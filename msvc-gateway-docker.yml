@@ -61,6 +61,8 @@ spring:
           uri: lb://msvc-users
           predicates:
             - Path=/api/users/**
+    	#filters:
+          #  - StripPrefix=1
     	- id: msvc-carts
           uri: lb://msvc-carts
           predicates:
