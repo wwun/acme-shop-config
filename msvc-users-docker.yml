@@ -1,6 +1,5 @@
 server:
   port: 8001
- # forward-headers-strategy: framework   # 👈 agrega esto
 
 spring:
   datasource:
@@ -25,7 +24,7 @@ eureka:
 
 springdoc:
   api-docs:
-    path: /v3/api-docs             # 👈 usa el path estándar
+    path: /v3/api-docs
   swagger-ui:
     enabled: false
   show-actuator: true
