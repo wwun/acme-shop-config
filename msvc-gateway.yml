@@ -66,9 +66,11 @@ spring:
           predicates:
             - Path=/api/carts/**
         - id: auth-service
-          uri: lb://msvc-users
+          uri: lb://msvc-auth
           predicates:
             - Path=/api/auth/**
+          filters:
+            - StripPrefix=1
 
 springdoc:
   api-docs:
