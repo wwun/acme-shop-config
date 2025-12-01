@@ -67,12 +67,12 @@ spring:
           uri: lb://msvc-carts
           predicates:
             - Path=/api/carts/**
-        - id: msvc-auths
-          uri: lb://msvc-auths
+        - id: msvc-auth
+          uri: lb://msvc-auth
           predicates:
-            - Path=/api/auths/**
+            - Path=/api/auth/**
         - id: oauth2-passthrough
-          uri: lb://msvc-auths
+          uri: lb://msvc-auth
           predicates:
             - Path=/api/oauth2/**
 
