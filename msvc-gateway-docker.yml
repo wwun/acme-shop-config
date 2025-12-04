@@ -74,7 +74,7 @@ spring:
         - id: oauth2-passthrough
           uri: lb://msvc-auth
           predicates:
-            - Path=/api/oauth2/**
+            - Path=/api/oauth2/**,/login/oauth2/**
 
 springdoc:
   api-docs:
