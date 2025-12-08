@@ -75,6 +75,8 @@ spring:
           uri: lb://msvc-auth
           predicates:
             - Path=/api/oauth2/**,/login/oauth2/**
+          filters:
+            - StripPrefix=1
 
 springdoc:
   api-docs:
