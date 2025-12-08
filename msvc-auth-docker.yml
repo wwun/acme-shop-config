@@ -15,7 +15,8 @@ spring:
               - openid
               - profile
               - email
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            redirect-uri: "${OAUTH2_REDIRECT_URI}"
+            #"{baseUrl}/login/oauth2/code/{registrationId}"
         provider:
           google:
             issuer-uri: https://accounts.google.com
