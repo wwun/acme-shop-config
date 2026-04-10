@@ -71,6 +71,10 @@ spring:
           uri: lb://msvc-auth
           predicates:
             - Path=/api/auth/**
+        - id: msvc-inventories
+          uri: lb://msvc-inventories
+          predicates:
+            - Path=/api/inventories/**
         - id: oauth2-login
           uri: lb://msvc-auth
           predicates:

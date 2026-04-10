@@ -38,6 +38,14 @@ spring:
             - Path=/api/users/v3/api-docs/**
           filters:
             - StripPrefix=2
+        #inventories
+        - id: msvc-inventories-swagger
+          uri: lb://msvc-inventories
+          predicates:
+            - Path=/api/inventories/v3/api-docs/**
+          filters:
+            - StripPrefix=2
+        #carts
         - id: msvc-carts-swagger
           uri: lb://msvc-carts
           predicates:
@@ -61,6 +69,10 @@ spring:
           uri: lb://msvc-users
           predicates:
             - Path=/api/users/**
+        - id: msvc-inventories
+          uri: lb://msvc-inventories
+          predicates:
+            - Path=/api/inventories/**
         - id: msvc-carts
           uri: lb://msvc-carts
           predicates:
@@ -86,6 +98,8 @@ springdoc:
         url: /api/products/v3/api-docs
       - name: orders
         url: /api/orders/v3/api-docs
+      - name: inventories
+        url: /api/inventories/v3/api-docs
 
 logging:
   level:
