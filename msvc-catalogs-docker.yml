@@ -1,0 +1,18 @@
+server:
+  port: 8001
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: false
+  show-actuator: true
+
+jwt:
+  secret: aVeryLongSecretKeyThatIsAtLeast32Chars!!
+  expiration: 900000 #15*1000*60 #15 minutes

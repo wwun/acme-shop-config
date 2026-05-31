@@ -52,6 +52,13 @@ spring:
             - Path=/api/carts/v3/api-docs/**
           filters:
             - StripPrefix=2
+        #catalogs
+        - id: msvc-catalogs-swagger
+          uri: lb://msvc-catalogs
+          predicates:
+            - Path=/api/catalogs/v3/api-docs/**
+          filters:
+            - StripPrefix=2
 
         - id: msvc-products
           uri: lb://msvc-products
@@ -77,6 +84,10 @@ spring:
           uri: lb://msvc-carts
           predicates:
             - Path=/api/carts/**
+        - id: msvc-catalogs
+          uri: lb://msvc-catalogs
+          predicates:
+            - Path=/api/catalogs/**
         - id: auth-service
           uri: lb://msvc-auth
           predicates:
