@@ -87,7 +87,7 @@ spring:
         - id: msvc-catalogs
           uri: lb://msvc-catalogs
           predicates:
-            - Path=/api/catalogs/**
+            - Path=/api/catalogs,/api/catalogs/**
         - id: auth-service
           uri: lb://msvc-auth
           predicates:
