@@ -13,74 +13,99 @@ spring:
     web-application-type: reactive
   cloud:
     gateway:
-      #webflux:
       routes:
-
-       #swagger
-        #products
+        # swagger
+        # products
         - id: msvc-products-swagger
           uri: lb://msvc-products
           predicates:
             - Path=/api/products/v3/api-docs/**
           filters:
             - StripPrefix=2
-        #orders
+
+        # orders
         - id: msvc-orders-swagger
           uri: lb://msvc-orders
           predicates:
             - Path=/api/orders/v3/api-docs/**
           filters:
             - StripPrefix=2
-        #users
+
+        # users
         - id: msvc-users-swagger
           uri: lb://msvc-users
           predicates:
             - Path=/api/users/v3/api-docs/**
           filters:
             - StripPrefix=2
+
+        # inventories
+        - id: msvc-inventories-swagger
+          uri: lb://msvc-inventories
+          predicates:
+            - Path=/api/inventories/v3/api-docs/**
+          filters:
+            - StripPrefix=2
+
+        # carts
         - id: msvc-carts-swagger
           uri: lb://msvc-carts
           predicates:
             - Path=/api/carts/v3/api-docs/**
           filters:
             - StripPrefix=2
-      
+
+        # catalogs
+        - id: msvc-catalogs-swagger
+          uri: lb://msvc-catalogs
+          predicates:
+            - Path=/api/catalogs/v3/api-docs/**
+          filters:
+            - StripPrefix=2
+
+        # services
         - id: msvc-products
           uri: lb://msvc-products
           predicates:
             - Path=/api/products/**,/api/categories/**
-          #filters:
-          #  - StripPrefix=1
+
         - id: msvc-orders
           uri: lb://msvc-orders
           predicates:
             - Path=/api/orders/**,/api/orderItems/**
-          #filters:
-          #  - StripPrefix=1
+
         - id: msvc-users
           uri: lb://msvc-users
           predicates:
             - Path=/api/users/**
-          #filters:
-          #  - StripPrefix=1
+
         - id: msvc-carts
           uri: lb://msvc-carts
           predicates:
             - Path=/api/carts/**
-        - id: msvc-auth
-          uri: lb://msvc-auth
-          predicates:
-            - Path=/api/auth/**
+
         - id: msvc-inventories
           uri: lb://msvc-inventories
           predicates:
             - Path=/api/inventories/**
+
+        - id: msvc-catalogs
+          uri: lb://msvc-catalogs
+          predicates:
+            - Path=/api/catalogs,/api/catalogs/**
+
+        - id: msvc-auth
+          uri: lb://msvc-auth
+          predicates:
+            - Path=/api/auth/**
+
         - id: oauth2-login
           uri: lb://msvc-auth
           predicates:
             - Path=/api/oauth2/**
           filters:
             - StripPrefix=1
+
         - id: oauth2-callback
           uri: lb://msvc-auth
           predicates:
@@ -100,13 +125,19 @@ springdoc:
         url: /api/products/v3/api-docs
       - name: orders
         url: /api/orders/v3/api-docs
+      - name: inventories
+        url: /api/inventories/v3/api-docs
+      - name: carts
+        url: /api/carts/v3/api-docs
+      - name: catalogs
+        url: /api/catalogs/v3/api-docs
 
 logging:
   level:
     org.springdoc: DEBUG
-    #org.springframework.cloud.gateway: DEBUG
-    #org.springframework.cloud.netflix.eureka: DEBUG
+    # org.springframework.cloud.gateway: DEBUG
+    # org.springframework.cloud.netflix.eureka: DEBUG
 
 jwt:
   secret: aVeryLongSecretKeyThatIsAtLeast32Chars!!
-  expiration: 900000 #15*1000*60 #15 minutes
+  expiration: 900000 # 15 minutes
